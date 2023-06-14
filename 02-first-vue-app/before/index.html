@@ -15,9 +15,13 @@
         <h1>playlist</h1>
         <input type="text" placeholder="Please enter the name of the song" class="search" />
         <ul>
+          <!-- 原本的code
           <li>YOLO</li>
           <li>about Us</li>
           <li>Unleash</li>
+          -->
+          <!--利用vue的模板語法來改寫-->
+          <li v-for="song in playlist">{{ song }}</li>
         </ul>
       </div>
     <!--引入javascript-->
