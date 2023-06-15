@@ -13,7 +13,8 @@
 <body>
     <div id="app">
         <h1>playlist</h1>
-        <input type="text" placeholder="Please enter the name of the song" class="search" />
+        <!--利用v-model來連動searchTerm數據(使用者輸入時，或後台修改數據時)-->
+        <input type="text" placeholder="Please enter the name of the song" class="search" v-model="searchTerm"/>
         <ul>
           <!-- 原本的code
           <li>YOLO</li>
