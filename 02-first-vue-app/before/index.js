@@ -3,6 +3,7 @@ const Playlist = {
     data() {
       return {
         playlist: ["YOLO", "about Us", "Unleash"],
+        searchTerm: "",    // 用來保存使用者的輸入
       };
     },
   };
