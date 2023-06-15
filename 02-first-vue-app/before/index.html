@@ -21,8 +21,10 @@
           <li>about Us</li>
           <li>Unleash</li>
           -->
-          <!--利用vue的模板語法來改寫-->
-          <li v-for="song in playlist">{{ song }}</li>
+          <!--利用vue的模板語法來改寫
+            呼叫filteredPlaylist 來篩選
+          -->
+          <li v-for="song in filteredPlaylist">{{ song }}</li>
         </ul>
       </div>
     <!--引入javascript-->
