@@ -17,7 +17,12 @@
       <div>
         <div class="input-field">
           <label for="username">username：</label>
-          <input id="username" type="text" @input="handleInput" />
+          <input 
+            :value="username"
+            id="username" 
+            type="text" 
+            @input="handleInput" 
+          />
           <button @click="resetUsername">reset</button>
         </div>
         <div class="result">
