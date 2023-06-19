@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <script src="lib/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>表單輸入控制事件處理</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- @submit.prevent -->
+      <div>
+        <div class="input-field">
+          <label for="username">username：</label>
+          <!-- 註解掉input 中的 這兩行
+            :value="username"
+            @input="handleInput" 
+            追加下面這行
+            v-model="username"
+          -->
+          <input 
+            id="username" 
+            type="text" 
+            v-model="username"
+          />
+          <button @click="resetUsername">reset</button>
+        </div>
+        <div class="result">
+          <p>The username you entered is：{{ username }}</p>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
