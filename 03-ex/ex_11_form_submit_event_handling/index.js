@@ -9,5 +9,17 @@ const app = Vue.createApp({
       intro: "",
     };
   },
+  methods: {
+    handleSubmit(e) {
+      e.preventDefault();   // 防止頁面跳轉，也可以寫在html中
+      console.log(
+        this.username,
+        this.gender,
+        this.interests,
+        this.occupation,
+        this.intro
+      );
+    }
+  }
 });
 app.mount("#app");

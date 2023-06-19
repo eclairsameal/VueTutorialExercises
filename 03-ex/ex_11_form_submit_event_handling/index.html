@@ -13,7 +13,8 @@
   </head>
   <body>
     <div id="app">
-      <div class="form">
+      <form class="form" @submit="handleSubmit"> <!-- 修改成 form 元素，並新增submit事件監聽 -->
+        <!-- @submit.prevent="handleSubmit"  -->
         <label for="username">用戶名：</label>
         <input id="username" type="text" v-model="username" />
         <label for="gender">性別：</label>
@@ -64,7 +65,9 @@
         </select>
         <label for="intro">自我介紹：</label>
         <textarea id="intro" rows="10" v-model="intro"></textarea>
-      </div>
+        <button type="submit">送出</button> <!-- 新增送出按鈕 -->
+      </br>
+      </from>
       <div class="result">
         <ul>
           <li>用戶名： {{ username }}</li>
