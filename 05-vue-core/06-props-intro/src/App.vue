@@ -1,12 +1,18 @@
 <script>
+import MessageItem from './components/MessageItem.vue';  // 導入組件
 export default {
-
+  components: {
+    MessageItem
+  }
 };
 </script>
 
 <template>
   <main>
     <div>
+      <MessageItem sender="Max" msg="Hello" time="19:30"/>
+      <MessageItem sender="Jone" msg="Hi" time="21:40"/>
+      <MessageItem sender="Alex" msg="Hiiiii" time="22:27"/>
     </div>
   </main>
 </template>

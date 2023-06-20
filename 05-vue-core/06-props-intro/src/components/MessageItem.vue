@@ -5,6 +5,7 @@
     <p>{{ msg }}</p>
   </div>
 </template>
+<!--props屬性：自定義組件內容-->
 <script>
 export default {
   props: ["sender", "msg", "time"],
