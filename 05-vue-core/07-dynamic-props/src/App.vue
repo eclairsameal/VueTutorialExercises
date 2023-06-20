@@ -2,7 +2,31 @@
 import MessageItem from './components/MessageItem.vue';  // 導入組件
 export default {
   components: {
-    MessageItem
+    MessageItem,
+  },
+  data() {
+    return {
+      messages: [
+        {
+          id: 1,
+          sender: "Max",
+          msg: "Hello",
+          time: "19:30",
+        },
+        {
+          id: 2,
+          sender: "Jone",
+          msg: "Hi",
+          time: "40",          
+        },
+        {
+          id: 3,
+          sender: "Alex",
+          msg: "Hiiiiiii",
+          time: "22:27",          
+        }
+      ]
+    }
   }
 };
 </script>
@@ -10,9 +34,14 @@ export default {
 <template>
   <main>
     <div>
-      <MessageItem sender="Max" msg="Hello" time="19:30"/>
+      <!-- <MessageItem sender="Max" msg="Hello" time="19:30"/>
       <MessageItem sender="Jone" msg="Hi" time="21:40"/>
-      <MessageItem sender="Alex" msg="Hiiiii" time="22:27"/>
+      <MessageItem sender="Alex" msg="Hiiiii" time="22:27"/> -->
+      <MessageItem v-for="message in messages" 
+      :key="message.id"
+      :sender="message.sender"
+      :msg="message.msg"
+      :time="message.time" />
     </div>
   </main>
 </template>
