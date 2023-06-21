@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, type Ref } from 'vue';
+import ShopIcon from "./components/Icon/ShopIcon.vue";
+import ProductItem from "./components/ProductItem.vue";
 
 interface Product {
   id: number;
@@ -46,12 +48,17 @@ const products = ref<Product[]>([
   <main>
     <h1><ShopIcon /> Shop </h1>
     <div class="productList">
-      <div v-for="product in products" :key="product.id" class="product">
-        <img :src="product.imageUrl" alt=""/>
+      <ProductItem
+        v-for="product in products"
+        :key="product.id"
+        v-bind="product"
+        class="product"
+      >
+        <!-- <img :src="product.imageUrl" alt=""/>
         <h2>{{ product.title }}</h2>
         <p class="price">Price : {{ product.price }}</p>
-        <p>Stock : {{ product.inStock ? "in stock" : "out of stock" }}</p>
-      </div>
+        <p>Stock : {{ product.inStock ? "in stock" : "out of stock" }}</p> --> 
+      </ProductItem>
     </div>
   </main>
 
