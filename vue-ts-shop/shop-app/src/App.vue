@@ -2,6 +2,7 @@
 import { ref, type Ref } from 'vue';
 import ShopIcon from "./components/Icon/ShopIcon.vue";
 import ProductItem from "./components/ProductItem.vue";
+import ActionAndFilters from "./components/ActionAndFilters.vue";
 
 interface Product {
   id: number;
@@ -47,6 +48,7 @@ const products = ref<Product[]>([
 <template>
   <main>
     <h1><ShopIcon /> Shop </h1>
+    <ActionAndFilters/>
     <div class="productList">
       <ProductItem
         v-for="product in products"
