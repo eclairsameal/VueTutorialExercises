@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref, type Ref } from 'vue';
+import { computed, reactive, ref, type Ref } from 'vue';
 import ShopIcon from "./components/Icon/ShopIcon.vue";
 import ProductItem from "./components/ProductItem.vue";
 import ActionAndFilters from "./components/ActionAndFilters.vue";
@@ -60,6 +60,24 @@ const sortAndFilter: SortAndFilter = reactive({
 });
 
 // 事件處理
+const productResult = computed(()=>{
+  return products.value.filter((p) => 
+  sortAndFilter.inStock === null ? true : p.inStock === sortAndFilter.inStock)
+  .sort((a, b) => {
+    if(sortAndFilter.price) {
+      return sortAndFilter.price === "asc" 
+      ? a.price - b.price 
+      : b.price - a.price;
+    }
+    if(sortAndFilter.name) {
+      return sortAndFilter.name === "asc" 
+      ? a.title.localeCompare(b.title)
+      : b.title.localeCompare(a.title);
+    }
+    return 0;
+  });
+})
+
 function handleSortByPrice() {
   if(sortAndFilter.price === "asc") {
     sortAndFilter.price = "desc";
@@ -92,11 +110,12 @@ sortAndFilter.inStock = inStock;
       @filter-by-stock="handleSortByStock"/>
     <div class="productList">
       <ProductItem
-        v-for="product in products"
+        v-for="product in productResult"
         :key="product.id"
         v-bind="product"
         class="product"
       >
+      <!-- in 後面改用 productResult -->
         <!-- <img :src="product.imageUrl" alt=""/>
         <h2>{{ product.title }}</h2>
         <p class="price">Price : {{ product.price }}</p>
