@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref, type Ref } from 'vue';
+import { reactive, ref, type Ref } from 'vue';
 import ShopIcon from "./components/Icon/ShopIcon.vue";
 import ProductItem from "./components/ProductItem.vue";
 import ActionAndFilters from "./components/ActionAndFilters.vue";
+
 
 interface Product {
   id: number;
@@ -43,12 +44,52 @@ const products = ref<Product[]>([
   },
 ])
 
+// 設定狀態
+type SortDirections = "asc" | "desc" | "";  // 升序
+
+interface SortAndFilter {
+  price: SortDirections;
+  name: SortDirections;
+  inStock: boolean | null;
+}
+
+const sortAndFilter: SortAndFilter = reactive({
+  price: "",
+  name: "",
+  inStock: null,
+});
+
+// 事件處理
+function handleSortByPrice() {
+  if(sortAndFilter.price === "asc") {
+    sortAndFilter.price = "desc";
+  } else {
+    sortAndFilter.price = "asc";
+  }
+  sortAndFilter.name = "";  // 當按照價格排序時，把依照名稱排序的狀態關掉
+}
+function handleSortByName() {
+  if(sortAndFilter.name = "asc") {
+    sortAndFilter.name = "desc";
+  } else {
+    sortAndFilter.name = "asc";
+  }
+  sortAndFilter.price = "";
+} 
+function handleSortByStock(inStock: boolean | null) {  // 要跟 (e: "filterByStock", inStock: boolean | null) 一樣
+sortAndFilter.inStock = inStock;
+}
+
+
 </script>
 
 <template>
   <main>
     <h1><ShopIcon /> Shop </h1>
-    <ActionAndFilters/>
+    <ActionAndFilters 
+      @sort-by-price="handleSortByPrice" 
+      @sort-by-name="handleSortByName" 
+      @filter-by-stock="handleSortByStock"/>
     <div class="productList">
       <ProductItem
         v-for="product in products"
